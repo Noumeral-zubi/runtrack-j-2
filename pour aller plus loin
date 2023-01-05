@@ -1,0 +1,19 @@
+def classify_triangle(a, b, c):
+    # On vérifie d'abord s'il est possible de construire un triangle avec ces longueurs
+    if a + b > c and a + c > b and b + c > a:
+        # Si c'est le cas, on détermine maintenant si le triangle est rectangle
+        if (a**2 + b**2 == c**2) or (a**2 + c**2 == b**2) or (b**2 + c**2 == a**2):
+            # Si le triangle est rectangle, on vérifie maintenant s'il est isocèle
+            if a == b or a == c or b == c:
+                return "Le triangle est rectangle et isocèle."
+            else:
+                return "Le triangle est rectangle mais pas isocèle."
+        # Si le triangle n'est pas rectangle, on vérifie s'il est équilatéral
+        elif a == b and b == c:
+            return "Le triangle est équilatéral."
+        # Si le triangle n'est ni rectangle ni équilatéral, il est quelconque
+        else:
+            return "Le triangle est quelconque."
+    # Si aucune des trois longueurs ne respecte la condition "a + b > c", cela signifie qu'il est impossible de construire un triangle
+    else:
+        return "Il est impossible de construire un triangle avec ces longueurs."
